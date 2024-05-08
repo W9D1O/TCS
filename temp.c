@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include "include/raylib.h"
+#include <stdbool.h>
+
+
+#define pixel 20
+#define pw 40
+#define ph 160
+
+void suma(double*h, double *m, double *s,double aux)
+{
+  *s += aux;
+  if((int)*s / 60 == 1){
+    *m= 1.0;
+    *s = 0.0;
+  }
+  if((int)*m /60 == 1){
+    *h = 1.0;
+    *m = 0;
+  }
+}
+
+void resta(double *h,double *m,double *s,double aux){
+  *s -= aux;
+  if(*s < 0.0){
+    *m -= 1.0;
+    *s = 59.0;
+  }
+  if(*m < 0.0){
+    *h -= 1.0;
+    *m = 59.0;}
+}
+
+void restablecer(double *h,double *m,double *s, bool *corre){
+  if(IsKeyPressed(KEY_SPACE)){
+    *h = 0.0;
+    *m = 15.0;
+    *s = (double)0;
+    *corre = false;
+  }
+}
+/*
+typedef struct Rectangle {
+    float x;                // Rectangle top-left corner position x
+    float y;                // Rectangle top-left corner position y
+    float width;            // Rectangle width
+    float height;           // Rectangle height
+} Rectangle;
+*/
+/*{
+0 = 1111110
+1 = 0000110
+2 = 1101101
+3 = 1111001
+4 = 0110011
+5 = 1011011
+6 = 1011111
+7 = 1110000
+8 = 1111111
+9 = 1111011
+}*/
+
+int main()
+{
+  double h, m, s,aux;
+  m = 0.0;
+  h = 0.0;
+  s = 0.0;
+  Rectangle p;
+  p.x = 80;
+  p.y = 200;
+  p.width = 80;
+  p.height = 40;
+  aux = 0.0;
+  bool corre = true;
+  bool retrocede = false;
+  InitWindow(ph*8, (pw * 2) * 9, "Windows Dfender Trolo");
+  SetTargetFPS(60);
+  while (!WindowShouldClose())
+  {
+    BeginDrawing();
+    if((int)aux >= 1){
+      if(corre){
+        suma(&h, &m, &s,aux);
+      } 
+      else{
+
+        resta(&h,&m,&s,aux);
+      }
+      aux = 0;
+    }
+      DrawRectangleRounded(p, 0.9, 6, RAYWHITE);
+      ClearBackground(RED);
+      restablecer(&h,&m,&s,&corre);
+       //printf("%d",corre);
+    printf("%f:%f:%f\n",h,m,s);
+    aux+= GetFrameTime();
+    EndDrawing();
+    
+  }
+  CloseWindow();
+}
