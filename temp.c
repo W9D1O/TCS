@@ -62,7 +62,11 @@ typedef struct Rectangle {
 
 void colorear (Rectangle p){
   int ccs = p.y;
+<<<<<<< HEAD
   int cyu = 200;
+=======
+  int cyu = pw;
+>>>>>>> be4ca667b676fdfef4c2dfab7942eee5ea22269b
   int uyc = pw;
 // Espero algún día ser capaz de reirme de este bucle
 //    |
@@ -84,15 +88,25 @@ void colorear (Rectangle p){
         p.width = pw;
         p.height = pw * 3;
         DrawRectangleRounded(p,0.9,6,BLACK);
+<<<<<<< HEAD
         cyu -= 160;
        }
        /*else{
+=======
+        cyu += 160;
+       }
+       else{
+>>>>>>> be4ca667b676fdfef4c2dfab7942eee5ea22269b
         if(j == 2){ 
           p.x = 200;
           p.y = 240;
           DrawRectangleRounded(p,0.9,6,BLACK);
         }
+<<<<<<< HEAD
         /*else{
+=======
+        else{
+>>>>>>> be4ca667b676fdfef4c2dfab7942eee5ea22269b
           p.x = 40;
           uyc = p.y;
           p.y = 400;
@@ -101,7 +115,11 @@ void colorear (Rectangle p){
           DrawRectangleRounded(p,0.9,6,BLACK);
           p.y = uyc;
         }
+<<<<<<< HEAD
        }*/
+=======
+       }
+>>>>>>> be4ca667b676fdfef4c2dfab7942eee5ea22269b
      }
      
     }
