@@ -30,6 +30,7 @@ int main(){
     InitWindow(w *32, w * 18, "Ave");
   while(!WindowShouldClose()){
       BeginDrawing();
+      ClearBackground(BLACK);
       colorear(&p);
       EndDrawing();
       }
