@@ -60,6 +60,57 @@ typedef struct Rectangle {
 9 = 1111011
 }*/
 
+void colorear (Rectangle p){
+  int ccs = p.y;
+  int cyu = pw;
+  int uyc = pw;
+// Espero algún día ser capaz de reirme de este bucle
+//    |
+//    V
+
+    for(int j = 0; j <= 6; j++){
+     if(j == 0 || j == 3 || j == 6){ 
+       p.y = ccs;
+       p.x = 80;
+       p.width = pw * 3;
+       p.height = pw;
+       DrawRectangleRounded(p,0.9,6,BLACK);
+       ccs += 160;
+     }
+     else{
+       if(j == 1 || j == 5){
+        p.y += 40;
+        p.x = cyu;
+        p.width = pw;
+        p.height = pw * 3;
+        DrawRectangleRounded(p,0.9,6,BLACK);
+        cyu += 160;
+       }
+       else{
+        if(j == 2){ 
+          p.x = 200;
+          p.y = 240;
+          DrawRectangleRounded(p,0.9,6,BLACK);
+        }
+        else{
+          p.x = 40;
+          uyc = p.y;
+          p.y = 400;
+          p.width = pw;
+          p.height = pw * 3;
+          DrawRectangleRounded(p,0.9,6,BLACK);
+          p.y = uyc;
+        }
+       }
+     }
+     
+    }
+    p.x = 80;
+    p.y = 200;
+    //DrawRectangleRounded(p,0.9,6,BLACK);
+
+}
+
 int main()
 {
   double h, m, s,aux;
@@ -89,11 +140,11 @@ int main()
       }
       aux = 0;
     }
-      DrawRectangleRounded(p, 0.9, 6, RAYWHITE);
       ClearBackground(RED);
       restablecer(&h,&m,&s,&corre);
        //printf("%d",corre);
-    printf("%f:%f:%f\n",h,m,s);
+     colorear(p);
+    //printf("%f:%f:%f\n",h,m,s);
     aux+= GetFrameTime();
     EndDrawing();
     
